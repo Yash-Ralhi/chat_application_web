@@ -2,10 +2,10 @@ const WebSocket = require('ws');
 
 // Use the Render-provided port for the WebSocket server
 const PORT = process.env.PORT || 8080;  // Use Render's port, or fallback to 8080
-const wss = new WebSocket.Server({ port: PORT });
+// const wss = new WebSocket.Server({ port: PORT });
 
 // Set up the WebSocket connection for clients (Frontend connecting to the backend)
-const socket = new WebSocket(`wss://chat-application-backend-oq9f.onrender.com`); // Correct URL without extra 'https://'
+const wss = new WebSocket(`wss://chat-application-backend-oq9f.onrender.com`); // Correct URL without extra 'https://'
 
 // List to store connected clients
 let clients = [];
