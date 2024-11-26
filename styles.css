@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FBF4DB;
+    margin: 0;
+}
+.welcome-text {
+    color: white;
+    align-items: center;
+}
+#chatContainer {
+    background-color: rgb(182, 162, 162);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+}
+
+#nameInput {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#chatRoom {
+    display: flex;
+    flex-direction: column;
+}
+
+#messages {
+    overflow-y: auto;
+    color: #fffefe;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #dfe6e6;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #605EA1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #22177A;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #8EA3A6;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .chat-container {
+      padding: 15px;
+    }
+  
+    .chat-box {
+      height: 280px;
+    }
+  
+    input[type="text"] {
+      width: 75%;
+    }
+  
+    button {
+      width: 20%;
+      font-size: 16px;
+    }
+  
+    .input-area {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .chat-container {
+      padding: 25px;
+    }
+  
+    .chat-box {
+      height: 350px;
+    }
+  
+    input[type="text"] {
+      width: 70%;
+    }
+  
+    button {
+      width: 15%;
+      font-size: 18px;
+    }
+  }

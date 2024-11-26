@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chatContainer">
+        <div id="nameInput">
+            <input type="text" id="name" placeholder="Enter your name">
+            <button onclick="enterChatRoom()">Enter</button>
+        </div>
+
+        <div id="chatRoom" style="display:none;">
+            <h1 id = "welcome-text">Welcome to Chatroom</h1>
+            <div id="messages"></div>
+            <input type="text" id="message" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
