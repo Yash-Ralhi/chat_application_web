@@ -1,7 +1,10 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8080 });
+// Use Render-provided port or default to 8080 for local development
+const PORT = process.env.PORT || 8080;
 
+// Initialize WebSocket server
+const wss = new WebSocket.Server({ port: PORT });
 
 let clients = [];
 
@@ -10,7 +13,7 @@ wss.on('connection', (ws) => {
     clients.push(ws);
 
     ws.on('message', (message) => {
-        // Ensure the message is decoded to a string if it's in Buffer format
+        // Decode message if it is in Buffer format
         const decodedMessage = message.toString();
         console.log('Received message:', decodedMessage);
         
@@ -26,6 +29,10 @@ wss.on('connection', (ws) => {
         console.log('Client disconnected');
         clients = clients.filter((client) => client !== ws);
     });
+
+    ws.on('error', (err) => {
+        console.error('WebSocket error:', err);
+    });
 });
 
-console.log('WebSocket server listening on port 8080');
+console.log(`WebSocket server listening on port ${PORT}`);
