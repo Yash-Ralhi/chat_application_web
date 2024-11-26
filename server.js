@@ -1,6 +1,13 @@
 const WebSocket = require('ws');
+const express = require('express');
+const http = require('http');
 
-const wss = new WebSocket.Server({ port: 8080 });
+// Create an Express app
+const app = express();
+const server = http.createServer(app);
+
+// Set up the WebSocket server
+const wss = new WebSocket.Server({ server });
 
 let clients = [];
 
@@ -9,11 +16,9 @@ wss.on('connection', (ws) => {
     clients.push(ws);
 
     ws.on('message', (message) => {
-        // Ensure the message is decoded to a string if it's in Buffer format
         const decodedMessage = message.toString();
         console.log('Received message:', decodedMessage);
-        
-        // Broadcast the message to all clients except the sender
+
         clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
                 client.send(decodedMessage);
@@ -27,4 +32,7 @@ wss.on('connection', (ws) => {
     });
 });
 
-console.log('WebSocket server listening on port 8080');
+const PORT = process.env.PORT || 8080;
+server.listen(PORT, () => {
+    console.log(`WebSocket server listening on port ${PORT}`);
+});

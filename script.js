@@ -9,7 +9,9 @@ function enterChatRoom() {
         document.getElementById("chatRoom").style.display = "block";
 
         // Connect to WebSocket server
-        socket = new WebSocket("ws://chat-application-web.onrender.com");
+        // Replace this line with the URL of your deployed WebSocket server
+        const socket = new WebSocket('wss://chat-application-web.onrender.com');
+
 
         socket.onopen = function() {
             console.log("Connected to the server");
