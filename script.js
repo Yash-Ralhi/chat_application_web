@@ -9,9 +9,7 @@ function enterChatRoom() {
         document.getElementById("chatRoom").style.display = "block";
 
         // Connect to WebSocket server
-        // Replace this line with the URL of your deployed WebSocket server
-        const socket = new WebSocket('wss://chat-application-web.onrender.com');
-
+        socket = new WebSocket("wss://chat-application-web.onrender.com");
 
         socket.onopen = function() {
             console.log("Connected to the server");
@@ -42,22 +40,19 @@ function enterChatRoom() {
 }
 
 function sendMessage() {
-    const message = document.getElementById('message').value;
+    let message = document.getElementById("message").value;
+    if (message && socket.readyState === WebSocket.OPEN) {
+        // Send the message to the server prefixed with the username
+        socket.send(username + ": " + message);
 
-    // Check if the message is not empty and socket is properly initialized
-    if (message && socket && socket.readyState === WebSocket.OPEN) {
-        socket.send(message); // Send the message to the WebSocket server
-
-        // Optionally, display the message in the UI immediately
-        const messageDiv = document.createElement('div');
+        // Optionally, display the message on the current client's screen immediately
+        let messageDiv = document.createElement("div");
         messageDiv.classList.add('message');
-        messageDiv.textContent = `You: ${message}`;
-        document.getElementById('messages').appendChild(messageDiv);
+        messageDiv.innerHTML = username + ": " + message;
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll
 
         // Clear the input field after sending the message
-        document.getElementById('message').value = '';
-    } else {
-        console.error("WebSocket is not open or not initialized.");
+        document.getElementById("message").value = '';
     }
 }
-

@@ -15,7 +15,7 @@ app.use(cors({
 const server = http.createServer(app);
 
 // Set up the WebSocket server
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ port:8081 });
 
 let clients = [];
 
