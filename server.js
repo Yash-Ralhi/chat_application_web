@@ -9,8 +9,11 @@ const app = express();
 
 // Allow CORS from your Vercel frontend domain
 app.use(cors({
-    origin: ['http://localhost:8080', 'https://chat-application-web-frontend.vercel.app/']
+    origin: ['http://localhost:8080', 'https://chat-application-web.onrender.com']
 }));
+
+// Serve static files (frontend)
+app.use(express.static(path.join(__dirname)));
 
 // Create an HTTP server and pass it to the WebSocket server
 const server = http.createServer(app);
@@ -40,6 +43,11 @@ wss.on('connection', (ws) => {
         console.log('Client disconnected');
         clients = clients.filter((client) => client !== ws);
     });
+});
+
+// Serve index.html for all routes (single-page app support)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 const PORT = process.env.PORT || 8080;

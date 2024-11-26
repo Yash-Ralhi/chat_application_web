@@ -9,7 +9,7 @@ function enterChatRoom() {
         document.getElementById("welcome-text").innerText = `Welcome, ${name}`;
 
         // Establish WebSocket connection
-        socket = new WebSocket('ws://localhost:8080'); // Use the appropriate WebSocket URL
+        socket = new WebSocket('https://chat-application-web.onrender.com'); // Use the appropriate WebSocket URL
 
         socket.onopen = () => {
             console.log("Connected to the server");
