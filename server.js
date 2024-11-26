@@ -2,6 +2,10 @@ const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 8080 });
 const socket = new WebSocket(`wss://chat-application-web-backend.onrender.com`);
+// const PORT = process.env.PORT || 3000;  // Use Render's provided port
+// server.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
 
 
 let clients = [];
