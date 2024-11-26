@@ -8,10 +8,11 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "socket.io": "^4.5.1",
-    "dotenv": "^16.0.3",
-    "cors": "^2.8.5"
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
@@ -20,5 +21,6 @@
     "node": "16.x"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
