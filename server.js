@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 8080 });
-const socket = new WebSocket(`wss://chat-backend-esyj.onrender.com`);
+const socket = new WebSocket(`wss://chat-application-web-backend.onrender.com`);
 
 
 let clients = [];
