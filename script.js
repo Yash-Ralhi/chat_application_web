@@ -42,19 +42,22 @@ function enterChatRoom() {
 }
 
 function sendMessage() {
-    let message = document.getElementById("message").value;
-    if (message && socket.readyState === WebSocket.OPEN) {
-        // Send the message to the server prefixed with the username
-        socket.send(username + ": " + message);
+    const message = document.getElementById('message').value;
 
-        // Optionally, display the message on the current client's screen immediately
-        let messageDiv = document.createElement("div");
+    // Check if the message is not empty and socket is properly initialized
+    if (message && socket && socket.readyState === WebSocket.OPEN) {
+        socket.send(message); // Send the message to the WebSocket server
+
+        // Optionally, display the message in the UI immediately
+        const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
-        messageDiv.innerHTML = username + ": " + message;
-        messagesContainer.appendChild(messageDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll
+        messageDiv.textContent = `You: ${message}`;
+        document.getElementById('messages').appendChild(messageDiv);
 
         // Clear the input field after sending the message
-        document.getElementById("message").value = '';
+        document.getElementById('message').value = '';
+    } else {
+        console.error("WebSocket is not open or not initialized.");
     }
 }
+
