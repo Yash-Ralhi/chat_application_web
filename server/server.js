@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const WebSocket = require('ws');
+const path = require('path');
+
 
 // Create an Express app
 const app = express();
@@ -11,6 +13,8 @@ app.use(cors({
     origin: ['http://localhost:8081', 'https://chat-application-web-frontend.vercel.app/']
 }));
 
+// Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, 'client')));
 
 // Create an HTTP server and pass it to the WebSocket server
 const server = http.createServer(app);
