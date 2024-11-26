@@ -1,9 +1,17 @@
-const WebSocket = require('ws');
 const express = require('express');
+const cors = require('cors');
 const http = require('http');
+const WebSocket = require('ws');
 
 // Create an Express app
 const app = express();
+
+// Allow CORS from your Vercel frontend domain
+app.use(cors({
+    origin: 'https://chat-application-web-frontend.vercel.app/'  // Replace with your Vercel URL
+}));
+
+// Create an HTTP server and pass it to the WebSocket server
 const server = http.createServer(app);
 
 // Set up the WebSocket server
