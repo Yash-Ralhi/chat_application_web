@@ -55,7 +55,10 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s;#messages {
+    transition: background-color 0.3s;
+}
+
+#messages {
     max-height: 300px;
     overflow-y: auto;
     border: 1px solid #ccc;

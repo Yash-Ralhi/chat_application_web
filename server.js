@@ -8,8 +8,9 @@ const app = express();
 
 // Allow CORS from your Vercel frontend domain
 app.use(cors({
-    origin: 'https://chat-application-web-frontend.vercel.app/'  // Replace with your Vercel URL
+    origin: ['http://localhost:8081', 'https://chat-application-web-frontend.vercel.app/']
 }));
+
 
 // Create an HTTP server and pass it to the WebSocket server
 const server = http.createServer(app);

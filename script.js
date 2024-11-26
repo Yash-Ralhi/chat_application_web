@@ -9,7 +9,7 @@ function enterChatRoom() {
         document.getElementById("chatRoom").style.display = "block";
 
         // Connect to WebSocket server
-        socket = new WebSocket("wss://chat-application-web.onrender.com");
+        socket = new WebSocket("ws://localhost:8081");
 
         socket.onopen = function() {
             console.log("Connected to the server");
