@@ -4,23 +4,19 @@ const http = require('http');
 const WebSocket = require('ws');
 const path = require('path');
 
-
 // Create an Express app
 const app = express();
 
 // Allow CORS from your Vercel frontend domain
 app.use(cors({
-    origin: ['http://localhost:8081', 'https://chat-application-web-frontend.vercel.app/']
+    origin: ['http://localhost:8080', 'https://chat-application-web-frontend.vercel.app/']
 }));
-
-// Serve static files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname, 'client')));
 
 // Create an HTTP server and pass it to the WebSocket server
 const server = http.createServer(app);
 
 // Set up the WebSocket server
-const wss = new WebSocket.Server({ port:8081 });
+const wss = new WebSocket.Server({ server });
 
 let clients = [];
 
@@ -32,6 +28,7 @@ wss.on('connection', (ws) => {
         const decodedMessage = message.toString();
         console.log('Received message:', decodedMessage);
 
+        // Broadcast the message to all clients
         clients.forEach((client) => {
             if (client !== ws && client.readyState === WebSocket.OPEN) {
                 client.send(decodedMessage);
