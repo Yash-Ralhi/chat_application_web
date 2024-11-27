@@ -63,7 +63,7 @@ A simple, lightweight real-time chat application that allows multiple users to c
 3. Use the following configurations:
     * Build Command: `npm install`
     * Start Command: `node server.js`
-4. Deploy the service. Note the backend URL (e.g., https://chat-application-web.onrender.com).
+4. Deploy the service. Note the backend URL (https://chat-application-web.onrender.com).
 5. Update the WebSocket connection URL in `client.js`:
 
 ```javascript
@@ -78,15 +78,15 @@ const socket = new WebSocket(`wss://chat-application-web.onrender.com`);
 
 1. Log in to Vercel (https://vercel.com).
 2. Add a new project and link the front-end repository.
-3. Deploy the project. Note the front-end URL (e.g., https://chat-application-web-frontend.vercel.app/).
+3. Deploy the project. Note the front-end URL (https://chat-application-web-frontend.vercel.app/).
    
 **Usage Instructions**
 1. Access the Application:
-   *Open the front-end URL (e.g., https://chat-application-web-frontend.vercel.app/) in a browser.
+   * Open the front-end URL (e.g., https://chat-application-web-frontend.vercel.app/) in a browser.
 2. Join the Chat:
-   *Type your message in the input field and click "Send" or press Enter.
+   * Type your message in the input field and click "Send" or press Enter.
 3. Real-Time Interaction:
-   *Open multiple tabs or share the link with others to test real-time messaging.
+   * Open multiple tabs or share the link with others to test real-time messaging.
 ---
 ## Architecture
 ### Backend:
